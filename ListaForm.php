@@ -6,27 +6,28 @@ class ListaForm{
     private $html;
     private $titulo;
 
-     public function __construct()
-     {
+    public function __construct()
+    {
         $this->html = file_get_contents('html/main.html');
-        $this->titulo = "";
-     }
+        $this->titulo = null;
+    }
 
-     public function show()
-     {
-        $this->html = str_replace(':titulo', $this->titulo, $this->html);
+    public function show()
+    {
+        $this->html = str_replace('{titulo}', $this->titulo, $this->html);
         print $this->html;
-     }
+    }
 
-     public function lista()
-     {
+    public function criar()
+    {
         try
         {
             $lista = $_POST['titulo'];
             Lista::createList($lista);
-        } catch (Exception $e)
+        } 
+        catch (Exception $e)
         {
             $e->getMessage();
         }
-     }
+    }
 }

@@ -36,8 +36,8 @@ class Lista{
 
     public static function createList($titulo)
     {
-        //$conn = self::getConnection();
-        $lista = self::sanitizeString($titulo);
+        $conn = self::getConnection();
+        $lista = self::sanitizeString($titulo['titulo']);
         print $lista;
     }
 }
